@@ -1,7 +1,7 @@
 # VetSysFact - Sistema de Facturación para Veterinarias
 
 ## Descripción
-**SysFact** es un sistema de facturación. Este sistema permite gestionar ventas, clientes, productos y facturas de manera eficiente, brindando una solución integral para la administración de inventarios y procesos de facturación en clínicas pequeñas.
+**SysFact** es un sistema de facturación. Este sistema permite gestionar ventas, clientes, productos y facturas de manera eficiente, brindando una solución integral para la administración de inventarios y procesos de facturación .
 
 El sistema está desarrollado utilizando **Python**, con **PyQt5** para la interfaz gráfica de usuario (GUI) y **MySQL** como base de datos. Gracias a la integración con **SQLAlchemy**, el sistema permite gestionar todos los registros de manera sencilla a través de la GUI.
 
