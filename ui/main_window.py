@@ -4,7 +4,7 @@ from ui.factura_view import FacturaView
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle('Sistema de Facturación Veterinaria')
+        self.setWindowTitle('Sistema de Facturación ')
         self.setGeometry(100, 100, 800, 600)
 
         # Crear vistas

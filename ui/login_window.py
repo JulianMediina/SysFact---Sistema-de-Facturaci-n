@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets
 from models.usuario import Usuario, es_vendedor, es_cliente
+from ui.main_window import MainWindow
 from database import session
 
 class LoginWindow(QtWidgets.QWidget):
