@@ -1,11 +1,11 @@
 from PyQt5 import QtWidgets
-from ui.login_window import LoginWindow
+from  ui.facturaView import FacturacionWindow
+
 import sys
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
-
-    login_window = LoginWindow()
-    login_window.show()
-
+    facturaView = FacturacionWindow()
+    facturaView.show()
     sys.exit(app.exec_())
+    
