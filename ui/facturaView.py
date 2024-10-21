@@ -35,6 +35,7 @@ class FacturacionWindow(QtWidgets.QWidget):
 
         self.setWindowTitle("Sistema de Facturación")
         self.layout = QVBoxLayout()
+        self.resize(800, 600)  # Cambiar el tamaño de la ventana a 800x600 píxeles
 
         # Número de factura (consecutivo)
         self.label_numero_factura = QLabel(f"Factura N°: {self.get_numero_factura()}")
@@ -95,8 +96,8 @@ class FacturacionWindow(QtWidgets.QWidget):
         self.setLayout(self.layout)
 
     def get_numero_factura(self):
-        factura = session.query(Factura).order_by(Factura.idFactura.desc()).first()
-        return factura.idFactura + 1 if factura else 1
+        factura = session.query(Factura).order_by(Factura.idfactura.desc()).first()
+        return factura.idfactura + 1 if factura else 1
 
     def buscar_cliente(self):
         documento = self.input_documento.text()
@@ -159,17 +160,22 @@ class FacturacionWindow(QtWidgets.QWidget):
             lote_id = self.table.item(row, 0).data(QtCore.Qt.UserRole + 1)  # ID del lote
 
             detalle = DetalleFactura(
-                idFactura=nueva_factura.idFactura,
-                idProducto=id_producto,
-                idLote=lote_id,
                 cantidad=cantidad,
-                precio=precio_unitario
+                iva = 19,
+                factura_idfactura =self.get_numero_factura(),
+                producto_idProducto = id_producto
             )
             session.add(detalle)
+        
+        productolote = session.query(ProductoLote).filter_by(idProducto=id_producto, idLote=lote_id).first()
 
-            # Descontar las existencias del producto
-            producto_lote = session.query(ProductoLote).filter_by(idProducto=id_producto, idLote=lote_id).first()
-            producto_lote.cantidad -= cantidad
+        if productolote is not None:
+            productolote.cantidad -= cantidad  # Restar la cantidad de la propiedad cantidad
+            session.commit()  # No olvides hacer commit para guardar los cambios en la base de datos
+        else:
+            print("No se encontró el productolote.")
+
+ 
 
         session.commit()
         QtWidgets.QMessageBox.information(self, "Éxito", "Factura guardada correctamente")

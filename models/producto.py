@@ -16,7 +16,7 @@ class Lote(Base):
     fecha_fabricacion = Column(Date)
 
 class ProductoLote(Base):
-    __tablename__ = 'producto_lote'
+    __tablename__ = 'productolote'
     
     idProducto = Column(Integer, ForeignKey('producto.idProducto'), primary_key=True)
     idLote = Column(Integer, ForeignKey('lote.idLote'), primary_key=True)
