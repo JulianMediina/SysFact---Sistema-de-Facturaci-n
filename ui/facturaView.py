@@ -187,6 +187,7 @@ class ProductosWindow(QDialog):
 
         self.setWindowTitle("Seleccionar Producto")
         self.layout = QVBoxLayout()
+        self.resize(600,600)
 
         # Tabla para mostrar productos disponibles
         self.table = QTableWidget()
